@@ -138,6 +138,7 @@ var/shuttle_call/shuttle_calls[0]
 				if(!input || !(usr in view(1,src)))
 					return
 				captain_announce(input)//This should really tell who is, IE HoP, CE, HoS, RD, Captain
+				world << sound('sound/misc/announce.ogg')
 				log_say("[key_name(usr)] (@[usr.x],[usr.y],[usr.z]) has made a captain announcement: [input]")
 				message_admins("[key_name_admin(usr)] has made a captain announcement.", 1)
 				message_cooldown = 1

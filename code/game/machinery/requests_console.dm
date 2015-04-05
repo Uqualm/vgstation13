@@ -186,7 +186,7 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 				if (announceAuth && message)
 					dat += text("<A href='?src=\ref[src];sendAnnouncement=1'>Announce</A><BR>");
 				dat += text("<BR><A href='?src=\ref[src];setScreen=0'>Back</A><BR>")
-
+				
 			else	//main menu
 				screen = 0
 				announceAuth = 0
@@ -248,11 +248,12 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 		if(!announcementConsole)	return
 		for(var/mob/M in player_list)
 			if(!istype(M,/mob/new_player) && M.client)
+				world << sound('sound/misc/notice2.ogg')
 				M << "<b><font size = 3><font color = red>[department] announcement:</font color> [message]</font size></b>"
 		announceAuth = 0
 		message = ""
 		screen = 0
-
+		
 	if( href_list["department"] && message )
 		var/log_msg = message
 		var/sending = message
